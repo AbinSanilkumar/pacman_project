@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pac-Man AI Pathfinding Agent</title>
+    <link rel="stylesheet" href="{% static 'game_app/css/style.css' %}">
+</head>
+<body>
+    <h1>Pac-Man AI Pathfinding Agent</h1>
+    
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="messageBox" class="message-box"></div>
+    </div>
+
+    <div id="controls-panel">
+        <p><strong>Use Arrow Keys</strong> or *Swipe* to move Pac-Man.</p>
+
+        <div class="control-group">
+            <label for="algorithmSelect">Ghost AI Algorithm:</label>
+            <select id="algorithmSelect">
+                <option value="bfs">Breadth-First Search (BFS)</option>
+                <option value="astar" selected>A* Search</option>
+            </select>
+        </div>
+        
+        <div class="control-group">
+            <label for="levelSelect">Maze Difficulty (Level):</label>
+            <select id="levelSelect">
+                <option value="1">Level 1 (Easy)</option>
+                <option value="2">Level 2</option>
+                <option value="3">Level 3</option>
+                <option value="4" selected>Level 4 (Hard)</option>
+            </select>
+        </div>
+
+        <button id="resetButton">Reset Game</button>
+        
+        <div id="score-info">
+            <p>Score: <span id="scoreDisplay">0</span></p>
+            <p>Level: <span id="levelDisplay">4</span></p>
+            <p>Status: <span id="statusDisplay">Playing</span></p>
+        </div>
+    </div>
+    
+    <script src="{% static 'game_app/js/game.js' %}"></script>
+</body>
+</html>

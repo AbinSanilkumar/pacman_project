@@ -1,0 +1,186 @@
+/* game_app/static/game_app/css/style.css */
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #fff;
+    
+    /* 🛠️ KEY FIX: Lock to viewport size and prevent scrolling */
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden; /* Stops scrollbars from appearing */
+    padding: 10px; /* Reduced padding slightly to save screen space */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+}
+
+h1 {
+    color: #ff0;
+    margin-bottom: 10px; /* Reduced margin */
+    font-size: 1.8rem;
+    text-shadow: 0 0 5px rgba(255, 255, 0, 0.5);
+    text-align: center;
+    flex-shrink: 0; /* Prevents text from being squeezed, but might overflow if too long */
+}
+
+#game-container {
+    /* 🛠️ KEY FIX: Add flexibility and size limits */
+    flex-grow: 1; /* Allows it to take up available vertical space */
+    flex-shrink: 1; /* Allows it to shrink */
+    max-width: 95vw;
+    
+    /* Calculate max height dynamically based on viewport, reserving space for controls */
+    max-height: 80vh; 
+    
+    border: 4px solid #0000ff; /* Blue border for the maze */
+    box-shadow: 0 0 25px rgba(0, 0, 255, 0.7);
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #000;
+    
+    /* Center the canvas inside the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#gameCanvas {
+    display: block;
+    background-color: #000;
+    touch-action: none;
+    
+    /* 🛠️ KEY FIX: Enable scaling without changing drawing resolution */
+    max-width: 100%; 
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Ensures the aspect ratio is maintained */
+}
+
+#controls-panel {
+    width: 100%;
+    max-width: 960px;
+    background-color: #222;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0; /* Prevents controls from shrinking */
+}
+
+label {
+    font-weight: bold;
+    color: #fff;
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 150px;
+}
+
+select, button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s;
+}
+
+select {
+    background-color: #444;
+    color: #fff;
+}
+ 
+select:focus {
+    outline: 2px solid #ff0;
+}
+
+#resetButton {
+    background-color: #ff0;
+    color: #000;
+    font-weight: bold;
+    flex-basis: auto;
+    min-width: 120px;
+}
+ 
+#resetButton:hover {
+    background-color: #ffc;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(255, 255, 0, 0.5);
+}
+
+#score-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+    flex-basis: 100%;
+    text-align: center;
+}
+ 
+#score-info p {
+    margin: 0;
+    padding: 0;
+}
+
+#scoreDisplay, #levelDisplay {
+    color: #ff0;
+    font-weight: bold;
+}
+
+#statusDisplay {
+    color: #0f0;
+    font-weight: bold;
+}
+ 
+.message-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    border: 4px solid #ff0;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(255, 255, 0, 0.7);
+    z-index: 100;
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    display: none;
+}
+ 
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    #controls-panel {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    #score-info {
+        flex-direction: row;
+        gap: 30px;
+        flex-basis: auto;
+        margin-top: 0;
+    }
+    label {
+        flex-basis: auto;
+        text-align: left;
+    }
+}
